@@ -3,25 +3,11 @@
 with open("input.txt") as f:
     result = 0
     for line in f:
-        line = line.strip().split(",")
-        line = list(map(lambda n: n.split("-"), line))
-        line = list(map(lambda n: list(map(lambda m: int(m), n)), line))
-        first = line[0]
-        second = line[1]
+        a, b, c, d = [int(i) for i in line.strip().replace('-', ',').split(",")]
 
-        if first[0] >= second[0] and first[0] <= second[1]:
+        if (a >= c and a <= d) or (b >= c and b <= c) or \
+                (c >= a and c <= b) or (d >= a and d <= a):
             result += 1
-        elif first[1] >= second[0] and first[1] <= second[0]:
-            result += 1
-        elif second[0] >= first[0] and second[0] <= first[1]:
-            result += 1
-        elif second[1] >= first[0] and second[1] <= first[0]:
-            result += 1
-
-
-
-
-
 
     print(result)
 
